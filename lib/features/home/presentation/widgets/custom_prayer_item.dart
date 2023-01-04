@@ -29,6 +29,6 @@ class CustomPrayerItem extends StatelessWidget {
   }
 
   formatTime(String time) {
-    return DateFormat("hh:mm a").format(DateFormat("hh:mm").parse(time));
+    return DateFormat("hh:mm a").format(DateFormat("HH:mm").parse(time));
   }
 }
