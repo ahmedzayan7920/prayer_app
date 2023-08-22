@@ -15,20 +15,22 @@ class CustomSuccessWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PrayerTimesCubit, PrayerTimesState>(
       builder: (context, state) {
-        var cubit = BlocProvider.of<PrayerTimesCubit>(context);
+        state as PrayerTimesSuccessState;
+        var day = state.currentDate.day - 1;
+        var prayerTimes = state.prayerTimes[day];
         return Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomPrayerItem(title: AppStrings.fajr, value: cubit.prayerTimes[cubit.currentDate.day - 1].fajr),
+            CustomPrayerItem(title: AppStrings.fajr, value: prayerTimes.fajr),
             const Divider(height: 30),
-            CustomPrayerItem(title: AppStrings.duhr, value: cubit.prayerTimes[cubit.currentDate.day - 1].duhr),
+            CustomPrayerItem(title: AppStrings.duhr, value: prayerTimes.duhr),
             const Divider(height: 30),
-            CustomPrayerItem(title: AppStrings.asr, value: cubit.prayerTimes[cubit.currentDate.day - 1].asr),
+            CustomPrayerItem(title: AppStrings.asr, value: prayerTimes.asr),
             const Divider(height: 30),
-            CustomPrayerItem(title: AppStrings.maghreeb, value: cubit.prayerTimes[cubit.currentDate.day - 1].maghreeb),
+            CustomPrayerItem(title: AppStrings.maghreeb, value: prayerTimes.maghreeb),
             const Divider(height: 30),
-            CustomPrayerItem(title: AppStrings.esha, value: cubit.prayerTimes[cubit.currentDate.day - 1].esha),
+            CustomPrayerItem(title: AppStrings.esha, value: prayerTimes.esha),
           ],
         );
       },

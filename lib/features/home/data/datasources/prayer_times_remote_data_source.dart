@@ -6,10 +6,12 @@ abstract class PrayerTimesRemoteDataSource {
   Future<List<PrayerTimesModel>> getPrayerTimes({
     required double longitude,
     required double latitude,
+    required DateTime dateTime,
   });
 }
 
-class PrayerTimesRemoteDataSourceImplement implements PrayerTimesRemoteDataSource {
+class PrayerTimesRemoteDataSourceImplement
+    implements PrayerTimesRemoteDataSource {
   final Dio dio;
 
   PrayerTimesRemoteDataSourceImplement({required this.dio});
@@ -18,10 +20,11 @@ class PrayerTimesRemoteDataSourceImplement implements PrayerTimesRemoteDataSourc
   Future<List<PrayerTimesModel>> getPrayerTimes({
     required double longitude,
     required double latitude,
+    required DateTime dateTime,
   }) async {
     try {
       final response = await dio.get(
-        ApiEndPoints.calendar,
+        "${ApiEndPoints.calendar}/${dateTime.year}/${dateTime.month}",
         queryParameters: {
           "longitude": "$longitude",
           "latitude": "$latitude",

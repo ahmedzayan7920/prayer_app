@@ -13,10 +13,18 @@ class PrayerTimesRepositoryImplement implements PrayerTimesRepository {
   });
 
   @override
-  Future<Either<Failure, List<PrayerTimes>>> getPrayerTimes({required double longitude, required double latitude}) async {
+  Future<Either<Failure, List<PrayerTimes>>> getPrayerTimes({
+    required double longitude,
+    required double latitude,
+    required DateTime dateTime,
+  }) async {
     try {
-      final remotePosts = await remoteDataSource.getPrayerTimes(longitude: longitude, latitude: latitude);
-      return Right(remotePosts);
+      final prayerTimes = await remoteDataSource.getPrayerTimes(
+        longitude: longitude,
+        latitude: latitude,
+        dateTime: dateTime,
+      );
+      return Right(prayerTimes);
     } catch (e) {
       if (e is DioError) {
         return Left(
