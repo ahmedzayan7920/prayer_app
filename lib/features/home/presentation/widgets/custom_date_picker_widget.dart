@@ -1,4 +1,3 @@
-
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,9 +6,7 @@ import '../cubit/prayer_times_cubit.dart';
 import '../cubit/prayer_times_state.dart';
 
 class CustomDatePickerWidget extends StatefulWidget {
-
-
-    const CustomDatePickerWidget({
+  const CustomDatePickerWidget({
     Key? key,
   }) : super(key: key);
 
@@ -18,26 +15,25 @@ class CustomDatePickerWidget extends StatefulWidget {
 }
 
 class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
-  // final DatePickerController _controller = DatePickerController();
-
-  // void executeAfterBuild() {
-  //   _controller.animateToSelection();
-  // }
+  final DatePickerController _controller = DatePickerController();
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PrayerTimesCubit, PrayerTimesState>(
-      builder: (context, state) {
-        var cubit = BlocProvider.of<PrayerTimesCubit>(context);
-        WidgetsBinding.instance.addPostFrameCallback((_) => cubit.controller.animateToSelection());
+    return BlocSelector<PrayerTimesCubit, PrayerTimesState, DateTime>(
+      selector: (state) {
+        return state.currentDate;
+      },
+      builder: (context, currentDate) {
+        WidgetsBinding.instance.addPostFrameCallback((_) => _controller.animateToDate(currentDate));
         return DatePicker(
-          DateTime(cubit.currentDate.year, cubit.currentDate.month),
-          initialSelectedDate: cubit.currentDate,
-          daysCount: DateUtils.getDaysInMonth(cubit.currentDate.year, cubit.currentDate.month),
+          currentDate.copyWith(day: 1),
+          initialSelectedDate: currentDate,
+          daysCount:
+              DateUtils.getDaysInMonth(currentDate.year, currentDate.month),
           selectionColor: Colors.blueAccent,
-          controller: cubit.controller,
+          controller: _controller,
           onDateChange: (selectedDate) {
-            cubit.changeCurrentDate(selectedDate);
+            context.read<PrayerTimesCubit>().changeCurrentDate(selectedDate);
           },
         );
       },

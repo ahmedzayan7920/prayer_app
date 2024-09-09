@@ -2,13 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:prayer_app/core/utils/app_strings.dart';
 
 abstract class Failure {
-  final String errMessage;
+  final String message;
 
-  const Failure(this.errMessage);
+  const Failure(this.message);
 }
 
 class ServerFailure extends Failure {
-  ServerFailure(super.errMessage);
+  ServerFailure(super.message);
 
   factory ServerFailure.fromDioError(DioError dioError) {
     switch (dioError.type) {

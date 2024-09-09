@@ -25,7 +25,7 @@ class CustomFailureWidget extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              BlocProvider.of<PrayerTimesCubit>(context).getPrayerTimes();
+              BlocProvider.of<PrayerTimesCubit>(context).getPrayerTimes(dateTime: DateTime.now());
             },
             child: const Text(AppStrings.retry),
           ),

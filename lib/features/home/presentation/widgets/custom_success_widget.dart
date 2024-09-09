@@ -15,7 +15,6 @@ class CustomSuccessWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PrayerTimesCubit, PrayerTimesState>(
       builder: (context, state) {
-        state as PrayerTimesSuccessState;
         var day = state.currentDate.day - 1;
         var prayerTimes = state.prayerTimes[day];
         return Column(

@@ -28,15 +28,12 @@ class CustomPrayerColumn extends StatelessWidget {
         ),
         child: BlocBuilder<PrayerTimesCubit, PrayerTimesState>(
           builder: (context, state) {
-            var cubit = BlocProvider.of<PrayerTimesCubit>(context);
-            if(cubit.prayerTimes.isNotEmpty){
+            if (state.status == PrayerTimesRequestStatus.success) {
               return const CustomSuccessWidget();
-            }else{
-              if (state is PrayerTimesFailureState) {
-                return CustomFailureWidget(message: state.message);
-              } else {
-                return const CustomLoadingWidget();
-              }
+            } else if (state.status == PrayerTimesRequestStatus.failure) {
+              return CustomFailureWidget(message: state.errorMessage);
+            } else {
+              return const CustomLoadingWidget();
             }
           },
         ),

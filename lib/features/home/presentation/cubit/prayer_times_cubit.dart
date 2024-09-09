@@ -1,55 +1,52 @@
-import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:prayer_app/core/utils/app_strings.dart';
-import 'package:prayer_app/features/home/domain/entities/prayer_times.dart';
 import 'package:prayer_app/features/home/domain/usecases/get_prayer_times_usecase.dart';
 
 import 'prayer_times_state.dart';
 
 class PrayerTimesCubit extends Cubit<PrayerTimesState> {
   PrayerTimesCubit({required this.getPrayerTimesUsecase})
-      : super(PrayerTimesInitialState());
+      : super(PrayerTimesState());
   final GetPrayerTimesUsecase getPrayerTimesUsecase;
-  final DatePickerController controller = DatePickerController();
-  DateTime currentDate = DateTime.now();
 
   changeCurrentDate(DateTime selectedDate) {
-    currentDate = selectedDate;
-    if (state is! PrayerTimesFailureState) {
-      emit(PrayerTimesSuccessState(
-          currentDate: currentDate, prayerTimes: prayerTimes));
-    }
+    emit(state.copyWith(currentDate: selectedDate));
   }
 
-  changeMonth(DateTime selectedDate) {
-    currentDate = selectedDate;
-    getPrayerTimes();
-    controller.animateToSelection();
+  changeMonth(DateTime dateTime) {
+    getPrayerTimes(dateTime: dateTime);
   }
 
-  Position? position;
+  Position? _position;
 
-  List<PrayerTimes> prayerTimes = [];
-
-  getPrayerTimes() async {
-    prayerTimes.clear();
-    emit(PrayerTimesLoadingState());
+  getPrayerTimes({required DateTime dateTime}) async {
+    emit(
+      state.copyWith(
+        status: PrayerTimesRequestStatus.loading,
+        currentDate: dateTime,
+        prayerTimes: [],
+      ),
+    );
     await _getCurrentPosition();
-    if (position != null) {
+    if (_position != null) {
       var failureOrSuccess = await getPrayerTimesUsecase(
-        longitude: position!.longitude,
-        latitude: position!.latitude,
-        dateTime: currentDate,
+        longitude: _position!.longitude,
+        latitude: _position!.latitude,
+        dateTime: dateTime,
       );
       failureOrSuccess.fold(
         (failure) {
-          emit(PrayerTimesFailureState(message: failure.errMessage));
+          emit(state.copyWith(
+            status: PrayerTimesRequestStatus.failure,
+            errorMessage: failure.message,
+          ));
         },
         (prayerTimes) {
-          this.prayerTimes = prayerTimes;
-          emit(PrayerTimesSuccessState(
-              currentDate: currentDate, prayerTimes: prayerTimes));
+          emit(state.copyWith(
+            status: PrayerTimesRequestStatus.success,
+            prayerTimes: prayerTimes,
+          ));
         },
       );
     }
@@ -81,10 +78,15 @@ class PrayerTimesCubit extends Cubit<PrayerTimesState> {
     try {
       final hasPermission = await _handleLocationPermission();
       if (hasPermission) {
-        position = await Geolocator.getCurrentPosition();
+        _position = await Geolocator.getCurrentPosition();
       }
     } catch (e) {
-      emit(PrayerTimesFailureState(message: e.toString()));
+      emit(
+        state.copyWith(
+          status: PrayerTimesRequestStatus.failure,
+          errorMessage: e.toString(),
+        ),
+      );
     }
   }
 }
