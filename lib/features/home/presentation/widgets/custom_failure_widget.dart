@@ -6,9 +6,9 @@ import '../cubit/prayer_times_cubit.dart';
 
 class CustomFailureWidget extends StatelessWidget {
   const CustomFailureWidget({
-    Key? key,
+    super.key,
     required this.message,
-  }) : super(key: key);
+  });
 
   final String message;
 

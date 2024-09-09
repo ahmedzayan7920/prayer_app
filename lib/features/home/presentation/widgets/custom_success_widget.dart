@@ -8,8 +8,8 @@ import 'custom_prayer_item.dart';
 
 class CustomSuccessWidget extends StatelessWidget {
   const CustomSuccessWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

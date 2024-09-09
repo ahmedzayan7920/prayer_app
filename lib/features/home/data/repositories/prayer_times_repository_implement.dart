@@ -26,7 +26,7 @@ class PrayerTimesRepositoryImplement implements PrayerTimesRepository {
       );
       return Right(prayerTimes);
     } catch (e) {
-      if (e is DioError) {
+      if (e is DioException) {
         return Left(
           ServerFailure.fromDioError(e),
         );

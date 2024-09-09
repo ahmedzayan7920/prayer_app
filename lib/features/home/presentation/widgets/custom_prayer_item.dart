@@ -3,10 +3,10 @@ import 'package:intl/intl.dart';
 
 class CustomPrayerItem extends StatelessWidget {
   const CustomPrayerItem({
-    Key? key,
+    super.key,
     required this.title,
     required this.value,
-  }) : super(key: key);
+  });
 
   final String title;
   final String value;

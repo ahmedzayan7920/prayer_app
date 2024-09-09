@@ -7,8 +7,8 @@ import '../cubit/prayer_times_state.dart';
 
 class CustomDatePickerWidget extends StatefulWidget {
   const CustomDatePickerWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<CustomDatePickerWidget> createState() => _CustomDatePickerWidgetState();

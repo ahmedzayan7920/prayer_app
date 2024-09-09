@@ -10,25 +10,25 @@ abstract class Failure {
 class ServerFailure extends Failure {
   ServerFailure(super.message);
 
-  factory ServerFailure.fromDioError(DioError dioError) {
-    switch (dioError.type) {
-      case DioErrorType.connectTimeout:
+  factory ServerFailure.fromDioError(DioException dioException) {
+    switch (dioException.type) {
+      case DioExceptionType.connectionTimeout:
         return ServerFailure(AppStrings.connectionTimeOutError);
 
-      case DioErrorType.sendTimeout:
+      case DioExceptionType.sendTimeout:
         return ServerFailure(AppStrings.sendTimeOutError);
 
-      case DioErrorType.receiveTimeout:
+      case DioExceptionType.receiveTimeout:
         return ServerFailure(AppStrings.receiveTimeOutError);
 
-      case DioErrorType.response:
+      case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-            dioError.response!.statusCode, dioError.response!.data);
-      case DioErrorType.cancel:
+            dioException.response!.statusCode, dioException.response!.data);
+      case DioExceptionType.cancel:
         return ServerFailure(AppStrings.cancelError);
 
-      case DioErrorType.other:
-        if (dioError.message.contains('SocketException')) {
+      case DioExceptionType.unknown:
+        if (dioException.message?.contains('SocketException') == true) {
           return ServerFailure(AppStrings.noInternetError);
         }
         return ServerFailure(AppStrings.unexpectedError);

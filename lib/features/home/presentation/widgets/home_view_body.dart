@@ -5,8 +5,8 @@ import 'custom_date_picker_widget.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

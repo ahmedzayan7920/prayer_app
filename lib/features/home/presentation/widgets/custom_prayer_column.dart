@@ -10,8 +10,8 @@ import 'custom_success_widget.dart';
 
 class CustomPrayerColumn extends StatelessWidget {
   const CustomPrayerColumn({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
