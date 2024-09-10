@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:prayer_app/core/utils/app_strings.dart';
 
+import '../../../../generated/l10n.dart';
 import '../cubit/prayer_times_cubit.dart';
 import '../cubit/prayer_times_state.dart';
 import 'custom_prayer_item.dart';
@@ -21,15 +21,30 @@ class CustomSuccessWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomPrayerItem(title: AppStrings.fajr, value: prayerTimes.fajr),
+            CustomPrayerItem(
+              title: S.of(context).fajr,
+              value: prayerTimes.fajr,
+            ),
             const Divider(height: 30),
-            CustomPrayerItem(title: AppStrings.duhr, value: prayerTimes.duhr),
+            CustomPrayerItem(
+              title: S.of(context).duhr,
+              value: prayerTimes.duhr,
+            ),
             const Divider(height: 30),
-            CustomPrayerItem(title: AppStrings.asr, value: prayerTimes.asr),
+            CustomPrayerItem(
+              title: S.of(context).asr,
+              value: prayerTimes.asr,
+            ),
             const Divider(height: 30),
-            CustomPrayerItem(title: AppStrings.maghreeb, value: prayerTimes.maghreeb),
+            CustomPrayerItem(
+              title: S.of(context).maghreeb,
+              value: prayerTimes.maghreeb,
+            ),
             const Divider(height: 30),
-            CustomPrayerItem(title: AppStrings.esha, value: prayerTimes.esha),
+            CustomPrayerItem(
+              title: S.of(context).esha,
+              value: prayerTimes.esha,
+            ),
           ],
         );
       },

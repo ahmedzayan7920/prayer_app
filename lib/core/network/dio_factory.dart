@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../utils/app_constants.dart';
 
@@ -20,15 +22,15 @@ abstract class DioFactory {
       headers: headers,
     );
 
-    // if (kDebugMode) {
-    //   dio.interceptors.add(
-    //     PrettyDioLogger(
-    //       requestHeader: true,
-    //       requestBody: true,
-    //       responseHeader: true,
-    //     ),
-    //   );
-    // }
+    if (kDebugMode) {
+      dio.interceptors.add(
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseHeader: true,
+        ),
+      );
+    }
 
     return dio;
   }

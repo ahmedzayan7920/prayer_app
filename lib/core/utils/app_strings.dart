@@ -16,9 +16,4 @@ abstract class AppStrings{
 
   static const String retry = "Retry";
 
-  static const String fajr = "Fajr";
-  static const String duhr = "Duhr";
-  static const String asr = "Asr";
-  static const String maghreeb = "Maghreeb";
-  static const String esha = "Esha";
 }

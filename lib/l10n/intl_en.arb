@@ -1,0 +1,8 @@
+{
+    "app_name" : "Prayer Times",
+    "fajr" : "Fajr",
+    "duhr" : "Duhr",
+    "asr" : "Asr",
+    "maghreeb" : "Maghreeb",
+    "esha" : "Esha"
+}
