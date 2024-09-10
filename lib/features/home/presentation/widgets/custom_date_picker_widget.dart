@@ -1,9 +1,10 @@
-import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 
 import '../cubit/prayer_times_cubit.dart';
 import '../cubit/prayer_times_state.dart';
+import 'custom_date_picker_item.dart';
 
 class CustomDatePickerWidget extends StatefulWidget {
   const CustomDatePickerWidget({
@@ -15,7 +16,13 @@ class CustomDatePickerWidget extends StatefulWidget {
 }
 
 class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
-  final DatePickerController _controller = DatePickerController();
+  final AutoScrollController _controller = AutoScrollController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +31,33 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
         return state.currentDate;
       },
       builder: (context, currentDate) {
-        WidgetsBinding.instance.addPostFrameCallback((_) => _controller.animateToDate(currentDate));
-        return DatePicker(
-          currentDate.copyWith(day: 1),
-          initialSelectedDate: currentDate,
-          daysCount:
-              DateUtils.getDaysInMonth(currentDate.year, currentDate.month),
-          selectionColor: Colors.blueAccent,
+        _makeSelectedDateInCenter(currentDate);
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          physics: const BouncingScrollPhysics(),
           controller: _controller,
-          onDateChange: (selectedDate) {
-            context.read<PrayerTimesCubit>().changeCurrentDate(selectedDate);
-          },
+          child: Row(
+            children: List.generate(
+              DateUtils.getDaysInMonth(currentDate.year, currentDate.month),
+              (index) {
+                DateTime date = currentDate.copyWith(day: index + 1);
+
+                return CustomDatePickerItem(
+                    controller: _controller, date: date);
+              },
+            ),
+          ),
         );
       },
+    );
+  }
+
+  void _makeSelectedDateInCenter(DateTime currentDate) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _controller.scrollToIndex(
+        currentDate.day - 1,
+        preferPosition: AutoScrollPosition.middle,
+      ),
     );
   }
 }
