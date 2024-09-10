@@ -4,5 +4,7 @@
     "duhr" : "Duhr",
     "asr" : "Asr",
     "maghreeb" : "Maghreeb",
-    "esha" : "Esha"
+    "esha" : "Esha",
+    "english" : "English",
+    "arabic" : "Arabic"
 }

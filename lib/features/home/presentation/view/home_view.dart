@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:prayer_app/features/home/presentation/cubit/prayer_times_cubit.dart';
+import 'package:prayer_app/features/home/presentation/cubits/prayer_times/prayer_times_cubit.dart';
+import 'package:prayer_app/generated/l10n.dart';
 
 import '../../../../injection.dart';
-import '../widgets/app_bar_title.dart';
+import '../cubits/app/app_cubit.dart';
+import '../cubits/app/app_state.dart';
 import '../widgets/home_view_body.dart';
-import '../widgets/next_month_icon.dart';
-import '../widgets/previous_month_icon.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -19,11 +19,27 @@ class HomeView extends StatelessWidget {
       lazy: false,
       child: Scaffold(
         appBar: AppBar(
-          title: const AppBarTitle(),
-          actions: const [
-            PreviousMonthIcon(),
-            NextMonthIcon(),
-          ],
+          centerTitle: true,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(S.of(context).arabic),
+              BlocSelector<AppCubit, AppState, bool>(
+                selector: (state) {
+                  return state.isEnglish;
+                },
+                builder: (context, isEnglish) {
+                  return Switch(
+                    value: isEnglish,
+                    onChanged: (value) {
+                      context.read<AppCubit>().setLocale(value);
+                    },
+                  );
+                },
+              ),
+              Text(S.of(context).english),
+            ],
+          ),
         ),
         body: const HomeViewBody(),
       ),

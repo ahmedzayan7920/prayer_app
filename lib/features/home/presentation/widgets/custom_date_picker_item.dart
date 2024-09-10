@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:prayer_app/features/home/presentation/cubits/app/app_cubit.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import '../../../../core/utils/app_colors.dart';
-import '../cubit/prayer_times_cubit.dart';
+import '../cubits/app/app_state.dart';
+import '../cubits/prayer_times/prayer_times_cubit.dart';
 
 class CustomDatePickerItem extends StatelessWidget {
   const CustomDatePickerItem({
@@ -36,47 +38,65 @@ class CustomDatePickerItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: AppColors.secondary),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                DateFormat("MMM").format(date),
-                style: TextStyle(
-                  color:
-                      date == context.read<PrayerTimesCubit>().state.currentDate
+          child: BlocSelector<AppCubit, AppState, String>(
+            selector: (state) {
+              _makeSelectedDateInCenter(
+                  context.read<PrayerTimesCubit>().state.currentDate);
+              return state.isEnglish ? 'en' : 'ar';
+            },
+            builder: (context, locale) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    DateFormat("MMM", locale).format(date),
+                    style: TextStyle(
+                      color: date ==
+                              context.read<PrayerTimesCubit>().state.currentDate
                           ? AppColors.white
                           : AppColors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                DateFormat("d").format(date),
-                style: TextStyle(
-                  color:
-                      date == context.read<PrayerTimesCubit>().state.currentDate
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    DateFormat("d", locale).format(date),
+                    style: TextStyle(
+                      color: date ==
+                              context.read<PrayerTimesCubit>().state.currentDate
                           ? AppColors.white
                           : AppColors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                DateFormat("EEE").format(date),
-                style: TextStyle(
-                  color:
-                      date == context.read<PrayerTimesCubit>().state.currentDate
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    DateFormat("EEE", locale).format(date),
+                    style: TextStyle(
+                      color: date ==
+                              context.read<PrayerTimesCubit>().state.currentDate
                           ? AppColors.white
                           : AppColors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         ),
+      ),
+    );
+  }
+
+  void _makeSelectedDateInCenter(DateTime currentDate) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _controller.scrollToIndex(
+        currentDate.day - 1,
+        preferPosition: AutoScrollPosition.middle,
       ),
     );
   }

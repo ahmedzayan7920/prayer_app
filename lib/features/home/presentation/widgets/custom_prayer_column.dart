@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_loading_widget.dart';
-import '../cubit/prayer_times_cubit.dart';
-import '../cubit/prayer_times_state.dart';
+import '../cubits/prayer_times/prayer_times_cubit.dart';
+import '../cubits/prayer_times/prayer_times_state.dart';
 import 'custom_failure_widget.dart';
 import 'custom_success_widget.dart';
 

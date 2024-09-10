@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:prayer_app/core/utils/app_strings.dart';
 
-import '../cubit/prayer_times_cubit.dart';
+import '../cubits/prayer_times/prayer_times_cubit.dart';
 
 class CustomFailureWidget extends StatelessWidget {
   const CustomFailureWidget({

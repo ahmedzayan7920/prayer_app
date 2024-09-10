@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../cubit/prayer_times_cubit.dart';
+import '../cubits/prayer_times/prayer_times_cubit.dart';
 
 class PreviousMonthIcon extends StatelessWidget {
   const PreviousMonthIcon({

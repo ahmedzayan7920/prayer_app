@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-import '../cubit/prayer_times_cubit.dart';
-import '../cubit/prayer_times_state.dart';
+import '../cubits/prayer_times/prayer_times_cubit.dart';
+import '../cubits/prayer_times/prayer_times_state.dart';
 import 'custom_date_picker_item.dart';
 
 class CustomDatePickerWidget extends StatefulWidget {
@@ -43,7 +43,9 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                 DateTime date = currentDate.copyWith(day: index + 1);
 
                 return CustomDatePickerItem(
-                    controller: _controller, date: date);
+                  controller: _controller,
+                  date: date,
+                );
               },
             ),
           ),

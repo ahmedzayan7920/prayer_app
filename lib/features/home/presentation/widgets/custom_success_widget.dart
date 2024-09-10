@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../generated/l10n.dart';
-import '../cubit/prayer_times_cubit.dart';
-import '../cubit/prayer_times_state.dart';
+import '../cubits/prayer_times/prayer_times_cubit.dart';
+import '../cubits/prayer_times/prayer_times_state.dart';
 import 'custom_prayer_item.dart';
 
 class CustomSuccessWidget extends StatelessWidget {
