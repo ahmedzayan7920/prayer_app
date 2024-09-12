@@ -16,8 +16,12 @@
     "notFound": "لم يتم العثور على الطلب",
     "internalServerError": "خطأ في الخادم",
     "badCertificate": "الشهادة غير صالحة",
-    "locationDisabled": "تم تعطيل خدمات الموقع",
-    "locationDenied": "لم يتم السماح للموقع",
-    "locationPermanentlyDenied": "لم يتم السماح للموقع بالكامل",
+    "locationNotFound": "الإعدادات الخاصة بالنظام الأساسي مفقودة. يرجى التأكد من أن الأذونات الصحيحة محددة في ملف AndroidManifest.xml أو Info.plist.",
+    "locationInProgress": "طلب الإذن قيد التقدم بالفعل. يرجى الانتظار حتى يكتمل الطلب الحالي.",
+    "locationTimeout": "انتهت مهلة طلب الموقع. يرجى المحاولة مرة أخرى أو التحقق من إعدادات الموقع.",
+    "locationServiceDisabled": "خدمات الموقع معطلة. يرجى تمكين خدمات الموقع في إعدادات الجهاز.",
+    "locationDenied": "تم رفض أذن الموقع. يرجى تمكين أذن الموقع في أعدادات الجهاز.",
+    "locationPermanentlyDenied": "إذن الموقع مرفوض بشكل دائم. يرجى تمكين أذن الموقع في أعدادات الجهاز.",
+    "unableToDetermineLocationPermission": "غير قادر على تحديد أذن الموقع.",
     "retry": "أعد المحاولة"
 }

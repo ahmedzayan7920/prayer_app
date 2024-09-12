@@ -36,12 +36,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "fajr": MessageLookupByLibrary.simpleMessage("الفجر"),
         "internalServerError":
             MessageLookupByLibrary.simpleMessage("خطأ في الخادم"),
-        "locationDenied":
-            MessageLookupByLibrary.simpleMessage("لم يتم السماح للموقع"),
-        "locationDisabled":
-            MessageLookupByLibrary.simpleMessage("تم تعطيل خدمات الموقع"),
+        "locationDenied": MessageLookupByLibrary.simpleMessage(
+            "تم رفض أذن الموقع. يرجى تمكين أذن الموقع في أعدادات الجهاز."),
+        "locationInProgress": MessageLookupByLibrary.simpleMessage(
+            "طلب الإذن قيد التقدم بالفعل. يرجى الانتظار حتى يكتمل الطلب الحالي."),
+        "locationNotFound": MessageLookupByLibrary.simpleMessage(
+            "الإعدادات الخاصة بالنظام الأساسي مفقودة. يرجى التأكد من أن الأذونات الصحيحة محددة في ملف AndroidManifest.xml أو Info.plist."),
         "locationPermanentlyDenied": MessageLookupByLibrary.simpleMessage(
-            "لم يتم السماح للموقع بالكامل"),
+            "إذن الموقع مرفوض بشكل دائم. يرجى تمكين أذن الموقع في أعدادات الجهاز."),
+        "locationServiceDisabled": MessageLookupByLibrary.simpleMessage(
+            "خدمات الموقع معطلة. يرجى تمكين خدمات الموقع في إعدادات الجهاز."),
+        "locationTimeout": MessageLookupByLibrary.simpleMessage(
+            "انتهت مهلة طلب الموقع. يرجى المحاولة مرة أخرى أو التحقق من إعدادات الموقع."),
         "maghreeb": MessageLookupByLibrary.simpleMessage("المغرب"),
         "noInternet":
             MessageLookupByLibrary.simpleMessage("لا يوجد اتصال بالانترنت"),
@@ -51,6 +57,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم استلام الرسالة فشل"),
         "retry": MessageLookupByLibrary.simpleMessage("أعد المحاولة"),
         "sendTimeout": MessageLookupByLibrary.simpleMessage("إرسال فشل"),
+        "unableToDetermineLocationPermission":
+            MessageLookupByLibrary.simpleMessage(
+                "غير قادر على تحديد أذن الموقع."),
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("خطأ غير متوقع")
       };

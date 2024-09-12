@@ -220,31 +220,71 @@ class S {
     );
   }
 
-  /// `Location services are disabled. Please enable the services.`
-  String get locationDisabled {
+  /// `Required platform-specific configuration is missing. Please ensure the proper permissions are defined in the AndroidManifest.xml or Info.plist.`
+  String get locationNotFound {
     return Intl.message(
-      'Location services are disabled. Please enable the services.',
-      name: 'locationDisabled',
+      'Required platform-specific configuration is missing. Please ensure the proper permissions are defined in the AndroidManifest.xml or Info.plist.',
+      name: 'locationNotFound',
       desc: '',
       args: [],
     );
   }
 
-  /// `Location permissions are denied.`
+  /// `Permission request is already in progress. Please wait for the current request to complete.`
+  String get locationInProgress {
+    return Intl.message(
+      'Permission request is already in progress. Please wait for the current request to complete.',
+      name: 'locationInProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location request timed out. Please try again or check your location settings.`
+  String get locationTimeout {
+    return Intl.message(
+      'Location request timed out. Please try again or check your location settings.',
+      name: 'locationTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location services are disabled. Please enable location services in your device settings.`
+  String get locationServiceDisabled {
+    return Intl.message(
+      'Location services are disabled. Please enable location services in your device settings.',
+      name: 'locationServiceDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location permission was denied. Please enable location permission in your device settings.`
   String get locationDenied {
     return Intl.message(
-      'Location permissions are denied.',
+      'Location permission was denied. Please enable location permission in your device settings.',
       name: 'locationDenied',
       desc: '',
       args: [],
     );
   }
 
-  /// `Location permissions are permanently denied, we cannot request permissions.`
+  /// `Location permission was permanently denied. Please enable location permission in your device settings.`
   String get locationPermanentlyDenied {
     return Intl.message(
-      'Location permissions are permanently denied, we cannot request permissions.',
+      'Location permission was permanently denied. Please enable location permission in your device settings.',
       name: 'locationPermanentlyDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unable to determine location permission.`
+  String get unableToDetermineLocationPermission {
+    return Intl.message(
+      'Unable to determine location permission.',
+      name: 'unableToDetermineLocationPermission',
       desc: '',
       args: [],
     );
