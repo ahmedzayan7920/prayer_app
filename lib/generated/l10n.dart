@@ -129,6 +129,136 @@ class S {
       args: [],
     );
   }
+
+  /// `Connection timeout with ApiServer`
+  String get connectionTimeout {
+    return Intl.message(
+      'Connection timeout with ApiServer',
+      name: 'connectionTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send timeout with ApiServer`
+  String get sendTimeout {
+    return Intl.message(
+      'Send timeout with ApiServer',
+      name: 'sendTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receive timeout with ApiServer`
+  String get receiveTimeout {
+    return Intl.message(
+      'Receive timeout with ApiServer',
+      name: 'receiveTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request to ApiServer was canceled`
+  String get cancelError {
+    return Intl.message(
+      'Request to ApiServer was canceled',
+      name: 'cancelError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Internet Connection`
+  String get noInternet {
+    return Intl.message(
+      'No Internet Connection',
+      name: 'noInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unexpected Error, Please try again`
+  String get unexpectedError {
+    return Intl.message(
+      'Unexpected Error, Please try again',
+      name: 'unexpectedError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your request not found, Please try later`
+  String get notFound {
+    return Intl.message(
+      'Your request not found, Please try later',
+      name: 'notFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Internal Server error, Please try later`
+  String get internalServerError {
+    return Intl.message(
+      'Internal Server error, Please try later',
+      name: 'internalServerError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bad certificate`
+  String get badCertificate {
+    return Intl.message(
+      'Bad certificate',
+      name: 'badCertificate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location services are disabled. Please enable the services.`
+  String get locationDisabled {
+    return Intl.message(
+      'Location services are disabled. Please enable the services.',
+      name: 'locationDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location permissions are denied.`
+  String get locationDenied {
+    return Intl.message(
+      'Location permissions are denied.',
+      name: 'locationDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location permissions are permanently denied, we cannot request permissions.`
+  String get locationPermanentlyDenied {
+    return Intl.message(
+      'Location permissions are permanently denied, we cannot request permissions.',
+      name: 'locationPermanentlyDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message(
+      'Retry',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

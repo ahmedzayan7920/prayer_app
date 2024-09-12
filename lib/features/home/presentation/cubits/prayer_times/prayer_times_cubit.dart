@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:prayer_app/core/utils/app_strings.dart';
 import 'package:prayer_app/features/home/domain/usecases/get_prayer_times_usecase.dart';
+import 'package:prayer_app/generated/l10n.dart';
 
 import 'prayer_times_state.dart';
 
@@ -57,18 +57,18 @@ class PrayerTimesCubit extends Cubit<PrayerTimesState> {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        throw Exception(AppStrings.locationDenied);
+        throw Exception(S.current.locationDenied);
       }
     }
     if (permission == LocationPermission.deniedForever) {
-      throw Exception(AppStrings.locationPermanentlyDenied);
+      throw Exception(S.current.locationPermanentlyDenied);
     }
 
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       serviceEnabled = await Geolocator.openLocationSettings();
       if (!serviceEnabled) {
-        throw Exception(AppStrings.locationDisabled);
+        throw Exception(S.current.locationDisabled);
       }
     }
     return true;

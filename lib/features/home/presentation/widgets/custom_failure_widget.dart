@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:prayer_app/core/utils/app_strings.dart';
 
+import '../../../../generated/l10n.dart';
 import '../cubits/prayer_times/prayer_times_cubit.dart';
 
 class CustomFailureWidget extends StatelessWidget {
@@ -25,9 +25,10 @@ class CustomFailureWidget extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              BlocProvider.of<PrayerTimesCubit>(context).getPrayerTimes(dateTime: DateTime.now());
+              BlocProvider.of<PrayerTimesCubit>(context)
+                  .getPrayerTimes(dateTime: DateTime.now());
             },
-            child: const Text(AppStrings.retry),
+            child: Text(S.of(context).retry),
           ),
         ],
       ),

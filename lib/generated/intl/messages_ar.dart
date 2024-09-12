@@ -25,10 +25,33 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_name": MessageLookupByLibrary.simpleMessage("مواقيت الصلاة"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "asr": MessageLookupByLibrary.simpleMessage("العصر"),
+        "badCertificate":
+            MessageLookupByLibrary.simpleMessage("الشهادة غير صالحة"),
+        "cancelError": MessageLookupByLibrary.simpleMessage("تم إلغاء الطلب"),
+        "connectionTimeout":
+            MessageLookupByLibrary.simpleMessage("اتصال بالخادم فشل"),
         "duhr": MessageLookupByLibrary.simpleMessage("الظهر"),
         "english": MessageLookupByLibrary.simpleMessage("الانجليزية"),
         "esha": MessageLookupByLibrary.simpleMessage("العشاء"),
         "fajr": MessageLookupByLibrary.simpleMessage("الفجر"),
-        "maghreeb": MessageLookupByLibrary.simpleMessage("المغرب")
+        "internalServerError":
+            MessageLookupByLibrary.simpleMessage("خطأ في الخادم"),
+        "locationDenied":
+            MessageLookupByLibrary.simpleMessage("لم يتم السماح للموقع"),
+        "locationDisabled":
+            MessageLookupByLibrary.simpleMessage("تم تعطيل خدمات الموقع"),
+        "locationPermanentlyDenied": MessageLookupByLibrary.simpleMessage(
+            "لم يتم السماح للموقع بالكامل"),
+        "maghreeb": MessageLookupByLibrary.simpleMessage("المغرب"),
+        "noInternet":
+            MessageLookupByLibrary.simpleMessage("لا يوجد اتصال بالانترنت"),
+        "notFound":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على الطلب"),
+        "receiveTimeout":
+            MessageLookupByLibrary.simpleMessage("تم استلام الرسالة فشل"),
+        "retry": MessageLookupByLibrary.simpleMessage("أعد المحاولة"),
+        "sendTimeout": MessageLookupByLibrary.simpleMessage("إرسال فشل"),
+        "unexpectedError":
+            MessageLookupByLibrary.simpleMessage("خطأ غير متوقع")
       };
 }

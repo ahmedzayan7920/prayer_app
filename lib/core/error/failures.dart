@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:prayer_app/core/utils/app_strings.dart';
+
+import '../../generated/l10n.dart';
 
 abstract class Failure {
   final String message;
@@ -13,27 +14,24 @@ class ServerFailure extends Failure {
   factory ServerFailure.fromDioError(DioException dioException) {
     switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
-        return ServerFailure(AppStrings.connectionTimeOutError);
-
+        return ServerFailure(S.current.connectionTimeout);
       case DioExceptionType.sendTimeout:
-        return ServerFailure(AppStrings.sendTimeOutError);
-
+        return ServerFailure(S.current.sendTimeout);
       case DioExceptionType.receiveTimeout:
-        return ServerFailure(AppStrings.receiveTimeOutError);
-
+        return ServerFailure(S.current.receiveTimeout);
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
             dioException.response!.statusCode, dioException.response!.data);
       case DioExceptionType.cancel:
-        return ServerFailure(AppStrings.cancelError);
-
+        return ServerFailure(S.current.cancelError);
+      case DioExceptionType.connectionError:
+        return ServerFailure(S.current.noInternet);
+      case DioExceptionType.badCertificate:
+        return ServerFailure(S.current.badCertificate);
       case DioExceptionType.unknown:
-        if (dioException.message?.contains('SocketException') == true) {
-          return ServerFailure(AppStrings.noInternetError);
-        }
-        return ServerFailure(AppStrings.unexpectedError);
+        return ServerFailure(S.current.unexpectedError);
       default:
-        return ServerFailure(AppStrings.unexpectedError);
+        return ServerFailure(S.current.unexpectedError);
     }
   }
 
@@ -41,11 +39,11 @@ class ServerFailure extends Failure {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       return ServerFailure(response['message']);
     } else if (statusCode == 404) {
-      return ServerFailure(AppStrings.notFoundError);
+      return ServerFailure(S.current.notFound);
     } else if (statusCode == 500) {
-      return ServerFailure(AppStrings.internalServerError);
+      return ServerFailure(S.current.internalServerError);
     } else {
-      return ServerFailure(AppStrings.unexpectedError);
+      return ServerFailure(S.current.unexpectedError);
     }
   }
 }

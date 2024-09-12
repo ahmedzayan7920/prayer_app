@@ -25,10 +25,35 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_name": MessageLookupByLibrary.simpleMessage("Prayer Times"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "asr": MessageLookupByLibrary.simpleMessage("Asr"),
+        "badCertificate":
+            MessageLookupByLibrary.simpleMessage("Bad certificate"),
+        "cancelError": MessageLookupByLibrary.simpleMessage(
+            "Request to ApiServer was canceled"),
+        "connectionTimeout": MessageLookupByLibrary.simpleMessage(
+            "Connection timeout with ApiServer"),
         "duhr": MessageLookupByLibrary.simpleMessage("Duhr"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "esha": MessageLookupByLibrary.simpleMessage("Esha"),
         "fajr": MessageLookupByLibrary.simpleMessage("Fajr"),
-        "maghreeb": MessageLookupByLibrary.simpleMessage("Maghreeb")
+        "internalServerError": MessageLookupByLibrary.simpleMessage(
+            "Internal Server error, Please try later"),
+        "locationDenied": MessageLookupByLibrary.simpleMessage(
+            "Location permissions are denied."),
+        "locationDisabled": MessageLookupByLibrary.simpleMessage(
+            "Location services are disabled. Please enable the services."),
+        "locationPermanentlyDenied": MessageLookupByLibrary.simpleMessage(
+            "Location permissions are permanently denied, we cannot request permissions."),
+        "maghreeb": MessageLookupByLibrary.simpleMessage("Maghreeb"),
+        "noInternet":
+            MessageLookupByLibrary.simpleMessage("No Internet Connection"),
+        "notFound": MessageLookupByLibrary.simpleMessage(
+            "Your request not found, Please try later"),
+        "receiveTimeout": MessageLookupByLibrary.simpleMessage(
+            "Receive timeout with ApiServer"),
+        "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+        "sendTimeout":
+            MessageLookupByLibrary.simpleMessage("Send timeout with ApiServer"),
+        "unexpectedError": MessageLookupByLibrary.simpleMessage(
+            "Unexpected Error, Please try again")
       };
 }

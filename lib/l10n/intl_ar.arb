@@ -5,6 +5,19 @@
     "asr": "العصر",
     "maghreeb": "المغرب",
     "esha": "العشاء",
-    "english" : "الانجليزية",
-    "arabic" : "العربية"
+    "english": "الانجليزية",
+    "arabic": "العربية",
+    "connectionTimeout": "اتصال بالخادم فشل",
+    "sendTimeout": "إرسال فشل",
+    "receiveTimeout": "تم استلام الرسالة فشل",
+    "cancelError": "تم إلغاء الطلب",
+    "noInternet": "لا يوجد اتصال بالانترنت",
+    "unexpectedError": "خطأ غير متوقع",
+    "notFound": "لم يتم العثور على الطلب",
+    "internalServerError": "خطأ في الخادم",
+    "badCertificate": "الشهادة غير صالحة",
+    "locationDisabled": "تم تعطيل خدمات الموقع",
+    "locationDenied": "لم يتم السماح للموقع",
+    "locationPermanentlyDenied": "لم يتم السماح للموقع بالكامل",
+    "retry": "أعد المحاولة"
 }
