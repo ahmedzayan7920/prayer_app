@@ -16,8 +16,12 @@
     "notFound": "Your request not found, Please try later",
     "internalServerError": "Internal Server error, Please try later",
     "badCertificate": "Bad certificate",
-    "locationDisabled": "Location services are disabled. Please enable the services.",
-    "locationDenied": "Location permissions are denied.",
-    "locationPermanentlyDenied": "Location permissions are permanently denied, we cannot request permissions.",
+    "locationNotFound": "Required platform-specific configuration is missing. Please ensure the proper permissions are defined in the AndroidManifest.xml or Info.plist.",
+    "locationInProgress": "Permission request is already in progress. Please wait for the current request to complete.",
+    "locationTimeout": "Location request timed out. Please try again or check your location settings.",
+    "locationServiceDisabled": "Location services are disabled. Please enable location services in your device settings.",
+    "locationDenied": "Location permission was denied. Please enable location permission in your device settings.",
+    "locationPermanentlyDenied": "Location permission was permanently denied. Please enable location permission in your device settings.",
+    "unableToDetermineLocationPermission": "Unable to determine location permission.",
     "retry": "Retry"
 }

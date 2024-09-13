@@ -38,11 +38,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "internalServerError": MessageLookupByLibrary.simpleMessage(
             "Internal Server error, Please try later"),
         "locationDenied": MessageLookupByLibrary.simpleMessage(
-            "Location permissions are denied."),
-        "locationDisabled": MessageLookupByLibrary.simpleMessage(
-            "Location services are disabled. Please enable the services."),
+            "Location permission was denied. Please enable location permission in your device settings."),
+        "locationInProgress": MessageLookupByLibrary.simpleMessage(
+            "Permission request is already in progress. Please wait for the current request to complete."),
+        "locationNotFound": MessageLookupByLibrary.simpleMessage(
+            "Required platform-specific configuration is missing. Please ensure the proper permissions are defined in the AndroidManifest.xml or Info.plist."),
         "locationPermanentlyDenied": MessageLookupByLibrary.simpleMessage(
-            "Location permissions are permanently denied, we cannot request permissions."),
+            "Location permission was permanently denied. Please enable location permission in your device settings."),
+        "locationServiceDisabled": MessageLookupByLibrary.simpleMessage(
+            "Location services are disabled. Please enable location services in your device settings."),
+        "locationTimeout": MessageLookupByLibrary.simpleMessage(
+            "Location request timed out. Please try again or check your location settings."),
         "maghreeb": MessageLookupByLibrary.simpleMessage("Maghreeb"),
         "noInternet":
             MessageLookupByLibrary.simpleMessage("No Internet Connection"),
@@ -53,6 +59,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "retry": MessageLookupByLibrary.simpleMessage("Retry"),
         "sendTimeout":
             MessageLookupByLibrary.simpleMessage("Send timeout with ApiServer"),
+        "unableToDetermineLocationPermission":
+            MessageLookupByLibrary.simpleMessage(
+                "Unable to determine location permission."),
         "unexpectedError": MessageLookupByLibrary.simpleMessage(
             "Unexpected Error, Please try again")
       };

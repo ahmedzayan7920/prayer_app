@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../../generated/l10n.dart';
 
@@ -44,6 +47,24 @@ class ServerFailure extends Failure {
       return ServerFailure(S.current.internalServerError);
     } else {
       return ServerFailure(S.current.unexpectedError);
+    }
+  }
+}
+
+class LocationFailure extends Failure {
+  const LocationFailure(super.message);
+
+  factory LocationFailure.fromException(Exception e) {
+    if (e is LocationServiceDisabledException) {
+      return LocationFailure(S.current.locationServiceDisabled);
+    } else if (e is TimeoutException) {
+      return LocationFailure(S.current.locationTimeout);
+    } else if (e is PermissionRequestInProgressException) {
+      return LocationFailure(S.current.locationInProgress);
+    } else if (e is PermissionDefinitionsNotFoundException) {
+      return LocationFailure(S.current.locationNotFound);
+    } else {
+      return LocationFailure(S.current.unexpectedError);
     }
   }
 }
