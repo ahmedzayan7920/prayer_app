@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:prayer_app/core/app_theme.dart';
-import 'package:prayer_app/features/home/presentation/cubits/app/app_cubit.dart';
-import 'package:prayer_app/features/home/presentation/view/home_view.dart';
-import 'package:prayer_app/simple_bloc_observer.dart';
+import 'core/app_theme.dart';
+import 'features/home/presentation/cubits/app/app_cubit.dart';
+import 'features/home/presentation/view/home_view.dart';
+import 'simple_bloc_observer.dart';
 
 import 'features/home/presentation/cubits/app/app_state.dart';
 import 'generated/l10n.dart';

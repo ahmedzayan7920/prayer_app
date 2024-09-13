@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:prayer_app/features/home/presentation/cubits/prayer_times/prayer_times_cubit.dart';
-import 'package:prayer_app/generated/l10n.dart';
+import '../cubits/prayer_times/prayer_times_cubit.dart';
+import '../../../../generated/l10n.dart';
 
 import '../../../../injection.dart';
 import '../cubits/app/app_cubit.dart';

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:prayer_app/core/utils/api_endpoints.dart';
+import '../../../../core/utils/api_endpoints.dart';
 import '../models/prayer_times_model.dart';
 
 abstract class PrayerTimesRemoteDataSource {

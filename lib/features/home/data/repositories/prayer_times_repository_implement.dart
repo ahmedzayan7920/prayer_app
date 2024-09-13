@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:prayer_app/features/home/domain/entities/prayer_times.dart';
+import '../../domain/entities/prayer_times.dart';
 import '../../../../core/error/failures.dart';
 import '../../domain/repositories/prayer_times_repository.dart';
 import '../datasources/prayer_times_remote_data_source.dart';

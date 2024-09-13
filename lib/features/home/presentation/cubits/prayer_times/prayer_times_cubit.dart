@@ -1,10 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:prayer_app/features/home/domain/usecases/get_location_usecase.dart';
-import 'package:prayer_app/features/home/domain/usecases/get_prayer_times_usecase.dart';
-import 'package:prayer_app/generated/l10n.dart';
+import '../../../domain/usecases/get_location_usecase.dart';
+import '../../../domain/usecases/get_prayer_times_usecase.dart';
 
 import 'prayer_times_state.dart';
+
 class PrayerTimesCubit extends Cubit<PrayerTimesState> {
   PrayerTimesCubit({
     required this.getPrayerTimesUsecase,
@@ -30,50 +29,37 @@ class PrayerTimesCubit extends Cubit<PrayerTimesState> {
         prayerTimes: [],
       ),
     );
-    print("loading");
 
     final locationResult = await getLocationUsecase();
 
     locationResult.fold(
       (failure) {
-        print("location failure");
         emit(state.copyWith(
           status: PrayerTimesRequestStatus.failure,
           errorMessage: failure.message,
         ));
       },
       (position) async {
-        print("location success");
         // Ensure we have a valid position before proceeding
-        if (position != null) {
-          var failureOrSuccess = await getPrayerTimesUsecase(
-            longitude: position.longitude,
-            latitude: position.latitude,
-            dateTime: dateTime,
-          );
-          failureOrSuccess.fold(
-            (failure) {
-              print("get prayer times failure");
-              emit(state.copyWith(
-                status: PrayerTimesRequestStatus.failure,
-                errorMessage: failure.message,
-              ));
-            },
-            (prayerTimes) {
-              print("get prayer times success");
-              emit(state.copyWith(
-                status: PrayerTimesRequestStatus.success,
-                prayerTimes: prayerTimes,
-              ));
-            },
-          );
-        } else {
-          print("location denied");
-          emit(state.copyWith(
-            status: PrayerTimesRequestStatus.failure,
-            errorMessage: S.current.locationDenied, // Or another relevant message
-          ));
-        }
+        var failureOrSuccess = await getPrayerTimesUsecase(
+          longitude: position.longitude,
+          latitude: position.latitude,
+          dateTime: dateTime,
+        );
+        failureOrSuccess.fold(
+          (failure) {
+            emit(state.copyWith(
+              status: PrayerTimesRequestStatus.failure,
+              errorMessage: failure.message,
+            ));
+          },
+          (prayerTimes) {
+            emit(state.copyWith(
+              status: PrayerTimesRequestStatus.success,
+              prayerTimes: prayerTimes,
+            ));
+          },
+        );
       },
     );
   }

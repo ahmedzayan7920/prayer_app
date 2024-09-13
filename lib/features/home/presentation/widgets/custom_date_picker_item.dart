@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:prayer_app/features/home/presentation/cubits/app/app_cubit.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../cubits/app/app_cubit.dart';
 import '../cubits/app/app_state.dart';
 import '../cubits/prayer_times/prayer_times_cubit.dart';
 

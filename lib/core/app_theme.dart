@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:prayer_app/core/utils/app_colors.dart';
+import 'utils/app_colors.dart';
 
 final appTheme = ThemeData(
   scaffoldBackgroundColor: AppColors.primary,
