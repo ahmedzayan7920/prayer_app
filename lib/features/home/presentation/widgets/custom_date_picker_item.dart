@@ -29,6 +29,7 @@ class CustomDatePickerItem extends StatelessWidget {
           context.read<PrayerTimesCubit>().changeCurrentDate(date);
         },
         child: Container(
+          width: MediaQuery.of(context).size.width / 5,
           margin: const EdgeInsets.symmetric(horizontal: 8),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
@@ -48,15 +49,21 @@ class CustomDatePickerItem extends StatelessWidget {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    DateFormat("MMM", locale).format(date),
-                    style: TextStyle(
-                      color: date ==
-                              context.read<PrayerTimesCubit>().state.currentDate
-                          ? AppColors.white
-                          : AppColors.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      DateFormat("MMM", locale).format(date),
+                      style: TextStyle(
+                        color: date ==
+                                context
+                                    .read<PrayerTimesCubit>()
+                                    .state
+                                    .currentDate
+                            ? AppColors.white
+                            : AppColors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -72,15 +79,21 @@ class CustomDatePickerItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                    DateFormat("EEE", locale).format(date),
-                    style: TextStyle(
-                      color: date ==
-                              context.read<PrayerTimesCubit>().state.currentDate
-                          ? AppColors.white
-                          : AppColors.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      DateFormat("EEE", locale).format(date),
+                      style: TextStyle(
+                        color: date ==
+                                context
+                                    .read<PrayerTimesCubit>()
+                                    .state
+                                    .currentDate
+                            ? AppColors.white
+                            : AppColors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
